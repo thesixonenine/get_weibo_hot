@@ -49,6 +49,10 @@ def weibo_hot_default():
 
 @app.route("/weibo")
 def weibo_hot():
+    """
+    微博
+    :return:
+    """
     return get_weibo_hot()
 
 

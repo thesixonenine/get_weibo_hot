@@ -67,4 +67,8 @@ def baidu_hot():
 
 
 if __name__ == "__main__":
+    # 获取微博最新的热搜及跳转链接
+    # / 获取微博的最新热搜
+    # /weibo 获取微博的最新热搜
+    # /baidu 获取百度的最新热搜
     app.run(host='0.0.0.0', port=8080)

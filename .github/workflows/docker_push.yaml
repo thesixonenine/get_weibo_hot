@@ -1,0 +1,31 @@
+name: docker_push
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-and-deploy-image:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取master分支
+      - name: Checkout
+        uses: actions/checkout@master
+      # 登陆dockerhub
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Build image
+        run: |
+          docker build . --file Dockerfile
+          docker push thesixonenine/get_weibo_hot
+
+      # 微信提醒
+#      - name: WeChat Work notification by markdown
+#        uses: chf007/action-wechat-work@master
+#        env:
+#          WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
+#        with:
+#          msgtype: markdown
+#          content: miwifi-exporter 编译完成

@@ -44,7 +44,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def weibo_hot_default():
-    return get_weibo_hot()
+    return get_baidu_hot()
 
 
 @app.route("/weibo")

@@ -19,6 +19,7 @@ jobs:
       - name: Build image
         run: |
           docker build . --file Dockerfile
+          docker tag get_weibo_hot thesixonenine/get_weibo_hot
           docker push thesixonenine/get_weibo_hot
 
       # 微信提醒

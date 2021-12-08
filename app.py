@@ -5,7 +5,7 @@ from urllib import parse
 
 
 def get_baidu_hot():
-    f = requests.get('http://top.baidu.com/buzz?b=1').text.encode('latin-1').decode('GBK')
+    f = requests.get('http://top.baidu.com/buzz?b=1').text
     soup = BeautifulSoup(f, features="lxml")
     list_tag = soup.find(attrs={"class", "mainBody"}).find(attrs={"class", "list-table"})
     trs = list_tag.find_all('tr')

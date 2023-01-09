@@ -7,9 +7,15 @@ from urllib import parse
 def get_baidu_hot():
     f = requests.get('http://top.baidu.com/buzz?b=1').text
     soup = BeautifulSoup(f, features="lxml")
-    list_tag = soup.find(attrs={"class", "mainBody"}).find(attrs={"class", "list-table"})
-    trs = list_tag.find_all('tr')
     json_str = {}
+    mainBody = soup.find(attrs={"class", "mainBody"})
+    if mainBody is None :
+        return json_str.__str__()
+    list_tag = mainBody.find(attrs={"class", "list-table"})
+    if list_tag is None:
+        return json_str.__str__()
+    trs = list_tag.find_all('tr')
+
     for i in range(1, 8):
         tr = trs[i]
         if tr.get('class') is not None:

@@ -26,12 +26,3 @@ jobs:
 #          docker build . --file Dockerfile
 #          docker tag get_weibo_hot thesixonenine/get_weibo_hot
 #          docker push thesixonenine/get_weibo_hot
-
-      # 微信提醒
-#      - name: WeChat Work notification by markdown
-#        uses: chf007/action-wechat-work@master
-#        env:
-#          WECHAT_WORK_BOT_WEBHOOK: ${{secrets.WECHAT_WORK_BOT_WEBHOOK}}
-#        with:
-#          msgtype: markdown
-#          content: miwifi-exporter 编译完成
